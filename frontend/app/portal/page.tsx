@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Bot, Building2, FileText, Landmark, ScrollText, Settings, Users } from "lucide-react";
+import { ArrowRight, Building2, FileText, Landmark, ScrollText, Settings, Users } from "lucide-react";
 
 const assistants = [
   { key: "plan", name: "计划管理助手", status: "已上线", href: "/assistants/plan", icon: FileText },
@@ -79,14 +79,6 @@ export default function PortalPage() {
             );
           })}
         </div>
-
-        <Link
-          href="/workflows"
-          className="mt-6 inline-flex items-center gap-2 rounded-md bg-slate-950 px-4 py-2 text-sm font-medium text-white"
-        >
-          <Bot size={17} />
-          AI 工作流中心 Demo
-        </Link>
       </section>
     </main>
   );
