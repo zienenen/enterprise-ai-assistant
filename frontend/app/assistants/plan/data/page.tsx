@@ -1,10 +1,39 @@
+import { Edit3, Trash2 } from "lucide-react";
+import { buttonClass, DataTable, Field, inputClass, Panel, PlanPageFrame, secondaryButtonClass, StatusBadge } from "@/features/plan-assistant/ui";
+
 export default function PlanDataPage() {
   return (
-    <main className="min-h-screen px-8 py-6">
-      <section className="mx-auto max-w-7xl rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
-        <h1 className="text-2xl font-semibold text-slate-950">计划/总结数据维护</h1>
-        <p className="mt-3 text-sm text-slate-600">按责任人、日期批次和类型筛选、编辑、删除和清空数据。</p>
-      </section>
-    </main>
+    <PlanPageFrame title="计划/总结数据维护" description="按责任人、日期批次、类型筛选数据，支持编辑、删除、清空和封存校验。">
+      <Panel title="筛选条件">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
+          <Field label="责任人"><input className={inputClass} placeholder="输入姓名" /></Field>
+          <Field label="日期批次"><input className={inputClass} defaultValue="2026-07-13" type="date" /></Field>
+          <Field label="类型">
+            <select className={inputClass}><option>全部</option><option>计划</option><option>总结</option></select>
+          </Field>
+          <Field label="封存状态">
+            <select className={inputClass}><option>全部</option><option>未封存</option><option>已封存</option></select>
+          </Field>
+          <div className="flex items-end gap-2">
+            <button className={buttonClass} type="button">查询</button>
+            <button className={secondaryButtonClass} type="button">重置</button>
+          </div>
+        </div>
+      </Panel>
+
+      <div className="mt-5">
+        <Panel title="数据列表" action={<button className={secondaryButtonClass} type="button">按筛选条件清空</button>}>
+          <DataTable
+            columns={["责任人", "部门", "类型", "日期批次", "事项内容", "状态", "操作"]}
+            rows={[
+              ["张三", "研发部", "计划", "2026-07-13", "完成上传解析接口联调", <StatusBadge tone="green" key="d1">未封存</StatusBadge>, <span className="inline-flex gap-2" key="a1"><Edit3 size={15} />编辑 <Trash2 size={15} />删除</span>],
+              ["李四", "产品部", "计划", "2026-07-13", "确认计划助手对话交互", <StatusBadge tone="green" key="d2">未封存</StatusBadge>, <span className="inline-flex gap-2" key="a2"><Edit3 size={15} />编辑 <Trash2 size={15} />删除</span>],
+              ["王五", "运营部", "总结", "2026-07-06", "整理旧 PPT 模板问题", <StatusBadge tone="amber" key="d3">待复核</StatusBadge>, <span className="inline-flex gap-2" key="a3"><Edit3 size={15} />编辑 <Trash2 size={15} />删除</span>],
+              ["赵六", "综合部", "总结", "2026-06-29", "完成周例会材料导出", <StatusBadge tone="slate" key="d4">已封存</StatusBadge>, "仅查看"],
+            ]}
+          />
+        </Panel>
+      </div>
+    </PlanPageFrame>
   );
 }

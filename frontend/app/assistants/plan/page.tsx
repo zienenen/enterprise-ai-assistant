@@ -10,6 +10,7 @@ import {
   Repeat2,
   Send,
   Sparkles,
+  Timer,
 } from "lucide-react";
 
 const quickActions = [
@@ -19,11 +20,12 @@ const quickActions = [
   { name: "总 PPT 拆分", href: "/assistants/plan/master-ppt", icon: Presentation },
   { name: "数据维护", href: "/assistants/plan/data", icon: Database },
   { name: "格式检查", href: "/assistants/plan/reviews", icon: ClipboardCheck },
+  { name: "工时合理性", href: "/assistants/plan/workload", icon: Timer },
   { name: "计划/总结转换", href: "/assistants/plan/conversions", icon: Repeat2 },
   { name: "导出与封存", href: "/assistants/plan/exports", icon: Archive },
 ];
 
-const suggestions = ["帮我检查本周计划格式", "从总结生成下周计划", "汇总本周风险事项", "导出周例会 PPT"];
+const suggestions = ["帮我检查本周计划格式", "分析本周工时是否合理", "从总结生成下周计划", "导出周例会 PPT"];
 
 export default function PlanAssistantPage() {
   return (
@@ -56,7 +58,7 @@ export default function PlanAssistantPage() {
 
           <div className="flex-1 space-y-5 px-6 py-6">
             <div className="max-w-3xl rounded-lg bg-slate-100 px-4 py-3 text-sm leading-6 text-slate-700">
-              我可以协助处理计划管理相关工作：上传解析 PPT、检查格式问题、维护计划/总结、生成转换结果、查看看板、导出材料和封存数据。
+              我可以协助处理计划管理相关工作：上传解析 PPT、检查格式问题、分析工时合理性、维护计划/总结、生成转换结果、查看看板、导出材料和封存数据。
             </div>
             <div className="ml-auto max-w-2xl rounded-lg bg-slate-950 px-4 py-3 text-sm leading-6 text-white">
               先帮我看一下本周计划材料是否完整，并指出需要修正的地方。
